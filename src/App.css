@@ -22,12 +22,12 @@ html {
 html,
 body,
 .App {
-  height: 100vh;
+  height: 100%;
 }
 
 .App {
   display: flex;
   place-content: center;
-  margin: 5rem;
-  background-color: hsla(60, 5%, 12%, 1);
+  background: hsla(60, 5%, 12%, 1);
+  padding: 5rem;
 }
