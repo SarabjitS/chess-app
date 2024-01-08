@@ -5,5 +5,16 @@
   display: grid;
   grid-template-columns: repeat(8, var(--sq-size));
   grid-template-rows: repeat(8, var(--sq-size));
-  /* width:calc(8, ) */
+  width: calc(8 * var(--sq-size));
+}
+
+.square {
+}
+
+.square-light {
+  background: var(--green-board-light);
+}
+
+.square-dark {
+  background: var(--green-board-dark);
 }

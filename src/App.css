@@ -29,4 +29,5 @@ body,
   display: flex;
   place-content: center;
   margin: 5rem;
+  background-color: hsla(60, 5%, 12%, 1);
 }
