@@ -5,7 +5,7 @@
   --brown-board-dark: #b58863;
   --brown-board-light: #f0d9b5;
 
-  --sq-block: 10rem;
+  --sq-size: 10rem;
 }
 
 * {
@@ -20,6 +20,13 @@ html {
 }
 
 html,
-body {
-  height: 100%;
+body,
+.App {
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  place-content: center;
+  margin: 5rem;
 }

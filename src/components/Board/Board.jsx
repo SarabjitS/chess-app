@@ -6,14 +6,16 @@ export default function Board() {
 
   return (
     <div className="board">
-      {rows.map((row) =>
-        cols.map((col) => (
-          <div>
-            {row}
-            {col}
-          </div>
-        ))
-      )}
+      <div className="squares">
+        {rows.map((row) =>
+          cols.map((col) => (
+            <div>
+              {row}
+              {col}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
