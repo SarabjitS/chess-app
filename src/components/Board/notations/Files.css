@@ -1,0 +1,9 @@
+.files {
+  display: flex;
+  grid-column: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--green-board-dark);
+  height: calc(0.25 * var(--sq-size));
+}

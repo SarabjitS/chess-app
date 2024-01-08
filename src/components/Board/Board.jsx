@@ -18,10 +18,7 @@ export default function Board() {
       <div className="squares">
         {rows.map((row, i) =>
           cols.map((col, j) => (
-            <div key={row + "-" + col} className={getColorClass(i, j)}>
-              {row}
-              {col}
-            </div>
+            <div key={row + "-" + col} className={getColorClass(i, j)}></div>
           ))
         )}
       </div>
