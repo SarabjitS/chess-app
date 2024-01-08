@@ -1,5 +1,5 @@
 import "./Board.css";
-// import Files from "./notations/Files.jsx";
+import Files from "./notations/Files.jsx";
 import Ranks from "./notations/Ranks.jsx";
 
 export default function Board() {
@@ -25,7 +25,7 @@ export default function Board() {
           ))
         )}
       </div>
-      {/* <Files cols={cols} /> */}
+      <Files cols={cols} />
     </div>
   );
 }
