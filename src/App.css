@@ -4,6 +4,8 @@
   --green-board-dark: #769656;
   --brown-board-dark: #b58863;
   --brown-board-light: #f0d9b5;
+
+  --sq-block: 10rem;
 }
 
 * {
