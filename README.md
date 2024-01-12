@@ -1,6 +1,6 @@
 # Chess App
 
-## [Live Demo Here]()
+## [Live Demo Here](https://sarabjits.github.io/chess-app/)
 
 > Learn react by making a simple chess app
 > 
