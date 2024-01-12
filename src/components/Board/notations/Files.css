@@ -1,4 +1,4 @@
-.files {
+/* .files {
   display: flex;
   grid-column: 2;
   flex-direction: row;
@@ -6,4 +6,4 @@
   justify-content: space-around;
   color: var(--green-board-dark);
   height: calc(0.25 * var(--sq-size));
-}
+} */

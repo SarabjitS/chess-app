@@ -1,20 +1,25 @@
 import "./Board.css";
-import Files from "./notations/Files.jsx";
-import Ranks from "./notations/Ranks.jsx";
+// import Files from "./notations/Files.jsx";
+// import Ranks from "./notations/Ranks.jsx";
+// import { clsx } from "clsx";
+
+const rows = [8, 7, 6, 5, 4, 3, 2, 1];
+const cols = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+const getColorClass = (i, j) => {
+  let x = "square";
+  x += (i + j) % 2 === 0 ? " square-light" : " square-dark";
+  return x;
+};
 
 export default function Board() {
-  const rows = [8, 7, 6, 5, 4, 3, 2, 1];
-  const cols = ["a", "b", "c", "d", "e", "f", "g", "h"];
-
-  const getColorClass = (i, j) => {
-    let x = "square";
-    x += (i + j) % 2 === 0 ? " square-light" : " square-dark";
-    return x;
-  };
-
   return (
     <div className="board">
-      <Ranks rows={rows} />
+      <div className="ranks">
+        {rows.map((row) => (
+          <span key={row}>{row}</span>
+        ))}
+      </div>
       <div className="squares">
         {rows.map((row, i) =>
           cols.map((col, j) => (
@@ -22,7 +27,11 @@ export default function Board() {
           ))
         )}
       </div>
-      <Files cols={cols} />
+      <div className="files">
+        {cols.map((col) => (
+          <span key={col}>{col}</span>
+        ))}
+      </div>
     </div>
   );
 }
