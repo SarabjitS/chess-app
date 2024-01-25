@@ -1,7 +1,5 @@
 import "./Board.css";
-// import Files from "./notations/Files.jsx";
-// import Ranks from "./notations/Ranks.jsx";
-// import { clsx } from "clsx";
+import { useState } from "react";
 
 const rows = Array(8)
   .fill()
@@ -17,8 +15,30 @@ const getColorClass = (i, j) => {
 };
 
 export default function Board() {
+  const [fen, setFen] = useState("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+  const [inputFen, setInputFen] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputFen(e.target.value);
+  };
+
+  const handleSetFen = () => {
+    setFen(inputFen);
+  };
+
   return (
     <div className="board">
+      <div className="input-container">
+        <label htmlFor="fenInput">Enter FEN Notation:</label>
+        <input
+          type="text"
+          id="fenInput"
+          value={inputFen}
+          onChange={handleInputChange}
+          placeholder="e.g., rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+        />
+        <button onClick={handleSetFen}>Set FEN</button>
+      </div>
       <div className="ranks">
         {rows.map((row) => (
           <span key={row}>{String.fromCharCode(row + 96)}</span>
@@ -27,10 +47,13 @@ export default function Board() {
       <div className="squares">
         {rows.map((row, i) =>
           cols.map((col, j) => (
-            <div
-              key={row + "-" + col}
-              className={getColorClass(9 - i, j)}
-            ></div>
+            <div key={row + "-" + col} className={getColorClass(9 - i, j)}>
+              {fen && fen.split("/")[8 - i - 1].charAt(j) !== "8" && (
+                <div className="piece">
+                  {fen.split("/")[8 - i - 1].charAt(j)}
+                </div>
+              )}
+            </div>
           ))
         )}
       </div>
