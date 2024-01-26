@@ -35,3 +35,9 @@
 .square-dark {
   background: var(--green-board-dark);
 }
+
+.super-board {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}

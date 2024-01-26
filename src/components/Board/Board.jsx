@@ -26,8 +26,12 @@ export default function Board() {
     setFen(inputFen);
   };
 
+  const renderSquareContent = (piece) => {
+    return piece !== "8" && <div className="piece">{piece}</div>;
+  };
+
   return (
-    <div className="board">
+    <div className="super-board">
       <div className="input-container">
         <label htmlFor="fenInput">Enter FEN Notation:</label>
         <input
@@ -39,28 +43,26 @@ export default function Board() {
         />
         <button onClick={handleSetFen}>Set FEN</button>
       </div>
-      <div className="ranks">
-        {rows.map((row) => (
-          <span key={row}>{String.fromCharCode(row + 96)}</span>
-        ))}
-      </div>
-      <div className="squares">
-        {rows.map((row, i) =>
-          cols.map((col, j) => (
-            <div key={row + "-" + col} className={getColorClass(9 - i, j)}>
-              {fen && fen.split("/")[8 - i - 1].charAt(j) !== "8" && (
-                <div className="piece">
-                  {fen.split("/")[8 - i - 1].charAt(j)}
-                </div>
-              )}
-            </div>
-          ))
-        )}
-      </div>
-      <div className="files">
-        {cols.map((col) => (
-          <span key={col}>{col}</span>
-        ))}
+      <div className="board">
+        <div className="ranks">
+          {rows.map((row) => (
+            <span key={row}>{String.fromCharCode(row + 96)}</span>
+          ))}
+        </div>
+        <div className="squares">
+          {rows.map((row, i) =>
+            cols.map((col, j) => (
+              <div key={row + "-" + col} className={getColorClass(9 - i, j)}>
+                {renderSquareContent(fen.split("/")[8 - i - 1].charAt(j))}
+              </div>
+            ))
+          )}
+        </div>
+        <div className="files">
+          {cols.map((col) => (
+            <span key={col}>{col}</span>
+          ))}
+        </div>
       </div>
     </div>
   );
