@@ -27,7 +27,18 @@ export default function Board() {
   };
 
   const renderSquareContent = (piece) => {
-    return piece !== "8" && <div className="piece">{piece}</div>;
+    if (isNaN(parseInt(piece, 10))) {
+      // If it's a piece, render it
+      return piece !== "8" && <div className="piece">{piece}</div>;
+    } else {
+      // If it's a number, render the appropriate number of empty squares
+      const emptySquares = parseInt(piece, 10);
+      return Array(emptySquares)
+        .fill(null)
+        .map((_, index) => (
+          <div key={`empty-${index}`} className="piece empty-square" />
+        ));
+    }
   };
 
   return (
@@ -53,7 +64,7 @@ export default function Board() {
           {rows.map((row, i) =>
             cols.map((col, j) => (
               <div key={row + "-" + col} className={getColorClass(9 - i, j)}>
-                {renderSquareContent(fen.split("/")[8 - i - 1].charAt(j))}
+                {renderSquareContent(fen.split("/")[i].charAt(j))}
               </div>
             ))
           )}
