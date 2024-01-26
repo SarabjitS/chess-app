@@ -39,7 +39,7 @@ export default function Board() {
           id="fenInput"
           value={inputFen}
           onChange={handleInputChange}
-          placeholder="e.g., rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+          placeholder="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
         />
         <button onClick={handleSetFen}>Set FEN</button>
       </div>

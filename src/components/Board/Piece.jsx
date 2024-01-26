@@ -1,26 +1,39 @@
-// export const createPosition = () => {
-//   const position = new Array(8).fill("").map((x) => new Array(8).fill(""));
+// // Piece.js
+// import React from "react";
+// import blackPawn from "../../assets/pieces/black/bpawn.png";
+// import blackRook from "./assets/black_rook.png";
+// import blackKnight from "./assets/black_knight.png";
+// import blackBishop from "./assets/black_bishop.png";
+// import blackQueen from "./assets/black_queen.png";
+// import blackKing from "./assets/black_king.png";
+// import whitePawn from "./assets/white_pawn.png";
+// import whiteRook from "./assets/white_rook.png";
+// import whiteKnight from "./assets/white_knight.png";
+// import whiteBishop from "./assets/white_bishop.png";
+// import whiteQueen from "./assets/white_queen.png";
+// import whiteKing from "./assets/white_king.png";
 
-//   for (let i = 0; i < 8; i++) {
-//     position[6][i] = "bpawn";
-//     position[1][i] = "wpawn";
-//   }
-
-//   position[0][0] = "wrook";
-//   position[0][1] = "wknight";
-//   position[0][2] = "wbishop";
-//   position[0][3] = "wqueen";
-//   position[0][4] = "wking";
-//   position[0][5] = "wbishop";
-//   position[0][6] = "wknight";
-//   position[0][7] = "wrook";
-
-//   position[7][0] = "brook";
-//   position[7][1] = "bknight";
-//   position[7][2] = "bbishop";
-//   position[7][3] = "bqueen";
-//   position[7][4] = "bking";
-//   position[7][5] = "bbishop";
-//   position[7][6] = "bknight";
-//   position[7][7] = "brook";
+// const pieceImages = {
+//   p: blackPawn,
+//   r: blackRook,
+//   n: blackKnight,
+//   b: blackBishop,
+//   q: blackQueen,
+//   k: blackKing,
+//   P: whitePawn,
+//   R: whiteRook,
+//   N: whiteKnight,
+//   B: whiteBishop,
+//   Q: whiteQueen,
+//   K: whiteKing,
 // };
+
+// const Piece = ({ piece }) => {
+//   if (piece in pieceImages) {
+//     return <img src={pieceImages[piece]} alt={piece} className="chess-piece" />;
+//   } else {
+//     return null;
+//   }
+// };
+
+// export default Piece;
