@@ -41,3 +41,13 @@
   flex-direction: column;
   gap: 5rem;
 }
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.piece {
+  font-size: 10rem;
+}

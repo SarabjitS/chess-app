@@ -1,5 +1,7 @@
 import "./Board.css";
 import { useState } from "react";
+import { initialBoardState } from "./consts";
+import Input from "../Input";
 
 const rows = Array(8)
   .fill()
@@ -14,46 +16,39 @@ const getColorClass = (i, j) => {
   return x;
 };
 
+const fenToAscii = {
+  P: "♙", // White Pawn
+  N: "♘", // White Knight
+  B: "♗", // White Bishop
+  R: "♖", // White Rook
+  Q: "♕", // White Queen
+  K: "♔", // White King
+  p: "♟", // Black Pawn
+  n: "♞", // Black Knight
+  b: "♝", // Black Bishop
+  r: "♜", // Black Rook
+  q: "♛", // Black Queen
+  k: "♚", // Black King
+};
+
 export default function Board() {
-  const [fen, setFen] = useState("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
-  const [inputFen, setInputFen] = useState("");
-
-  const handleInputChange = (e) => {
-    setInputFen(e.target.value);
-  };
-
-  const handleSetFen = () => {
-    setFen(inputFen);
-  };
+  const [boardState, setBoardState] = useState(initialBoardState);
 
   const renderSquareContent = (piece) => {
-    if (isNaN(parseInt(piece, 10))) {
-      // If it's a piece, render it
-      return piece !== "8" && <div className="piece">{piece}</div>;
+    if (piece === " ") {
+      // If an empty string, its an empty square
+      return <div className="piece empty-square" />;
     } else {
-      // If it's a number, render the appropriate number of empty squares
-      const emptySquares = parseInt(piece, 10);
-      return Array(emptySquares)
-        .fill(null)
-        .map((_, index) => (
-          <div key={`empty-${index}`} className="piece empty-square" />
-        ));
+      // If its not, its an actual piece
+      return <div className="piece">{fenToAscii[piece]}</div>;
     }
   };
 
   return (
+         <div className="super-board">
+
+<Input setBoardState={setBoardState} />
     <div className="super-board">
-      <div className="input-container">
-        <label htmlFor="fenInput">Enter FEN Notation:</label>
-        <input
-          type="text"
-          id="fenInput"
-          value={inputFen}
-          onChange={handleInputChange}
-          placeholder="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
-        />
-        <button onClick={handleSetFen}>Set FEN</button>
-      </div>
       <div className="board">
         <div className="ranks">
           {rows.map((row) => (
@@ -61,10 +56,10 @@ export default function Board() {
           ))}
         </div>
         <div className="squares">
-          {rows.map((row, i) =>
-            cols.map((col, j) => (
-              <div key={row + "-" + col} className={getColorClass(9 - i, j)}>
-                {renderSquareContent(fen.split("/")[i].charAt(j))}
+                  {boardState.map((row, i) =>
+            row.map((piece, j) => (
+              <div key={i + "-" + j} className={getColorClass(9 - i, j)}>
+                {renderSquareContent(piece)}
               </div>
             ))
           )}
